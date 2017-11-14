@@ -206,7 +206,7 @@ plot(p.box)
 
 `@sct`
 ```{r}
-
+success_msg("Well done!")
 ```
 ---
 ## Boxplot and individual data
@@ -268,7 +268,7 @@ plot(p.box)
 
 `@sct`
 ```{r}
-
+success_msg("HoHo!")
 ```
 
 ---
@@ -305,39 +305,49 @@ my.data <-
 `@sample_code`
 ```{r}
 
-#first create boxplot
+#first create boxplot with fill colours
+#defined by gender
+#leave next two lines untouched
 p.box<-
   ggplot(aes(y=volume,x=gender,fill=gender),data=my.data) +
   geom_boxplot()
-#add two colours look out for obvious stereotypes!
+#change the two colours look out for obvious stereotypes and do not use them!
+#Why not use "pink" and "light blue"
 p.box<- p.box+
-  scale_fill_manual(values=c("pink","light blue"))
+  scale_fill_manual(values=c("_____","_____"))
 #add a theme to remove a lot of clutter
+#one such theme is theme_classic()
 p.box<- p.box+  
-  theme_classic()
+  theme_c_____()
 #remove the legend
+#by setting the legend.position to "none"
 p.box<- p.box+  
-  theme(legend.position = 'none')
+  theme(legend._____ = '_____')
 ```
 
 `@solution`
 ```{r}
-#first create boxplot
+#first create boxplot with fill colours
+#defined by gender
+#leave next two lines untouched
 p.box<-
   ggplot(aes(y=volume,x=gender,fill=gender),data=my.data) +
   geom_boxplot()
-#add two colours look out for obvious stereotypes!
+#change the two colours look out for obvious stereotypes and do not use them!
+#Why not use "pink" and "light blue"
 p.box<- p.box+
   scale_fill_manual(values=c("pink","light blue"))
 #add a theme to remove a lot of clutter
+#one such theme is theme_classic()
 p.box<- p.box+  
   theme_classic()
 #remove the legend
+#by setting the legend.position to "none"
 p.box<- p.box+  
   theme(legend.position = 'none')
 ```
 
 `@sct`
 ```{r}
-
+success_msg("Well done!")
 ```
