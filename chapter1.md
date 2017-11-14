@@ -2,8 +2,7 @@
 title       : Recap of session
 description : A short recap of the session
 attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
-
+slides_link : 
 ---
 ## Recap of last session
 
@@ -283,10 +282,10 @@ xp: 100
 skills: 1
 ```
 
-
 `@instructions`
-`ggplot` has excellent plotting capabilities that allow for a wide range of customisation.
+ggplot has excellent plotting capabilities that allow for a wide range of customisation.
 Here we first add some colour to the plot.
+
 
 `@hint`
 
@@ -306,11 +305,36 @@ my.data <-
 `@sample_code`
 ```{r}
 
+#first create boxplot
+p.box<-
+  ggplot(aes(y=volume,x=gender,fill=gender),data=my.data) +
+  geom_boxplot()
+#add two colours look out for obvious stereotypes!
+p.box<- p.box+
+  scale_fill_manual(values=c("pink","light blue"))
+#add a theme to remove a lot of clutter
+p.box<- p.box+  
+  theme_classic()
+#remove the legend
+p.box<- p.box+  
+  theme(legend.position = 'none')
 ```
 
 `@solution`
 ```{r}
-
+#first create boxplot
+p.box<-
+  ggplot(aes(y=volume,x=gender,fill=gender),data=my.data) +
+  geom_boxplot()
+#add two colours look out for obvious stereotypes!
+p.box<- p.box+
+  scale_fill_manual(values=c("pink","light blue"))
+#add a theme to remove a lot of clutter
+p.box<- p.box+  
+  theme_classic()
+#remove the legend
+p.box<- p.box+  
+  theme(legend.position = 'none')
 ```
 
 `@sct`
