@@ -74,15 +74,17 @@ success_msg("Good work!")
 ```
 
 
+
+
 ---
-## Plotting
+## Barplot
 
 ```yaml
 type: NormalExercise
 lang: r
 xp: 50
 skills: 1
-key: '80360380e6'
+key: 470e26deb0
 ```
 `@pre_exercise_code`
 ```{r}
@@ -104,10 +106,12 @@ p.bar.data<-
          N=n(),
          sem_vol=sd(volume)/sqrt(N)) %>% 
   mutate(ymin=mean_vol-sem_vol,ymax=mean_vol+sem_vol)
+  
 ```
-We created a new dataframe that contains the mean and standard error of the mean (`SD/sqrt(N)`) for the volume for each gender.
 
 `@instructions`
+
+We created a new dataframe that contains the mean and standard error of the mean (`SD/sqrt(N)`) for the volume for each gender.
 
 1. Make a simple barplot and assign it to the variable p.bar
 2. Add error bars to the bar plot.
@@ -146,5 +150,170 @@ success_msg("Good work!")
 ```
 
 
+---
+## Boxplot
+
+```yaml
+type: NormalExercise
+key: 2a7427429d
+lang: r
+xp: 100
+skills: 1
+```
 
 
+`@instructions`
+
+Here you will find an explanation of central tendency like mean and median 
+and the second and third moment of a distribution.
+[insert plot here, link to material, see here for explanation]
+To get a good feeling for your data it is often beneficial to plot it 
+in several ways that also include second and third moments
+one example is the so called boxplot. 
+Execute the code on the right to view a boxplot.
+
+Compared to a barplot, the boxplot contains more information.
+The line in the middle of the box represents the median. If this line is shifted upwards or downwards
+of the middle, the data is skewed (not symetrically distributed around the mean).
+
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+n<-100
+set.seed(123)
+my.data<-data.frame(volume=c(rnorm(n,50,10),rnorm(n,40,10)),gender=c(rep("male",n),rep("female",n)))
+my.data <-
+  my.data %>% 
+  mutate(weight=volume+25+rnorm(n*2,0,10))
+```
+
+`@sample_code`
+```{r}
+p.box<-ggplot(aes(y=volume,x=gender),data=my.data)+
+    geom_boxplot()
+plot(p.box)
+```
+
+`@solution`
+```{r}
+p.box<-ggplot(aes(y=volume,x=gender),data=my.data)+
+    geom_boxplot()
+plot(p.box)
+```
+
+`@sct`
+```{r}
+
+```
+---
+## Boxplot and individual data
+
+```yaml
+type: NormalExercise
+key: 294e800201
+lang: r
+xp: 100
+skills: 1
+```
+
+
+`@instructions`
+To understand the rest of the boxplot it is convenient to overlay the 
+boxplot with the individual data via adding a jitter geom.
+
+Run the code on the right.
+
+50% of the data lie within the box (interquartile range `IQR`). 
+A large box thus signifies data that has a larger spread or variance.
+The whiskers (lines above and below box) are `1.5*IQR`. 
+The data points outside the whiskers are outliers. 
+
+
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+n<-100
+set.seed(123)
+my.data<-data.frame(volume=c(rnorm(n,50,10),rnorm(n,40,10)),gender=c(rep("male",n),rep("female",n)))
+my.data <-
+  my.data %>% 
+  mutate(weight=volume+25+rnorm(n*2,0,10))
+```
+
+`@sample_code`
+```{r}
+p.box<-ggplot(aes(y=volume,x=gender),data=my.data)+
+    geom_boxplot()+
+    geom_jitter(width=.1,col="red")
+    
+plot(p.box)
+
+```
+
+`@solution`
+```{r}
+p.box<-ggplot(aes(y=volume,x=gender),data=my.data)+
+    geom_boxplot()+
+    geom_jitter(width=.1,col="red")
+    
+plot(p.box)
+```
+
+`@sct`
+```{r}
+
+```
+
+---
+## Beautiful Plots
+
+```yaml
+type: NormalExercise
+key: 901e2614c4
+lang: r
+xp: 100
+skills: 1
+```
+
+
+`@instructions`
+`ggplot` has excellent plotting capabilities that allow for a wide range of customisation.
+Here we first add some colour to the plot.
+
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+n<-100
+set.seed(123)
+my.data<-data.frame(volume=c(rnorm(n,50,10),rnorm(n,40,10)),gender=c(rep("male",n),rep("female",n)))
+my.data <-
+  my.data %>% 
+  mutate(weight=volume+25+rnorm(n*2,0,10))
+```
+
+`@sample_code`
+```{r}
+
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
+```
