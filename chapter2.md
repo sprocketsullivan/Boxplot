@@ -1,7 +1,7 @@
 ---
 title       : Chapter 2
-description : Chapter 2
-attachments : 
+description : Chapter 2 - Intro
+attachments :
 slides_link :
 ---
 ## Recap of last session
