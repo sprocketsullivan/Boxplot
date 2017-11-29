@@ -1,6 +1,6 @@
 ---
-title       : Recap of session
-description : A short recap of the session
+title       : Beyond the barplot
+description : How to include distributional information in Figures.
 attachments :
 slides_link : 
 ---
@@ -312,7 +312,7 @@ p.box<-
   ggplot(aes(y=volume,x=gender,fill=gender),data=my.data) +
   geom_boxplot()
 #change the two colours look out for obvious stereotypes and do not use them!
-#Why not use "pink" and "light blue"
+# Why not use "pink" and "light blue"
 p.box<- p.box+
   scale_fill_manual(values=c("_____","_____"))
 #add a theme to remove a lot of clutter
@@ -334,7 +334,7 @@ p.box<-
   ggplot(aes(y=volume,x=gender,fill=gender),data=my.data) +
   geom_boxplot()
 #change the two colours look out for obvious stereotypes and do not use them!
-#Why not use "pink" and "light blue"
+# Why not use "pink" and "light blue"
 p.box<- p.box+
   scale_fill_manual(values=c("pink","light blue"))
 #add a theme to remove a lot of clutter
