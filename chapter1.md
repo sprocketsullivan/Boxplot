@@ -110,7 +110,7 @@ p.bar.data<-
 
 `@instructions`
 
-We created a new dataframe that contains the mean and standard error of the mean (`SD/sqrt(N)`) for the volume for each gender.
+We created a new dataframe (`p.bar.data`) that contains the mean and standard error of the mean ($SD/sqrt(N)$) for the volume for each gender.
 
 1. Make a simple barplot and assign it to the variable p.bar
 2. Add error bars to the bar plot.
