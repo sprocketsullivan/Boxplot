@@ -169,8 +169,9 @@ You can find additional, more in depth material
 We already introduced you to a central tendency measure of a distribution (mean $\mu$, median) and to the spread (dispersion) (variance $\sigma^2$, standard deviation $\sigma$).
 A normal distribution is symmetrical, that is $Mean = Median$.
 Execute the first line of code and you will see a density function of a standard normal distribution with $\mu=0$ (red line) and the median (blue dashed line).
-The shaded areas cover ~67% (dark grey, $\mu\pm1sd$) respectively ~95% (light grey, $\mu\pm2sd$) of the area under the curve.
-When the distribution is no longer symmetric 
+The shaded areas cover ~67% (dark gray, $\mu\pm1\sigma$) respectively ~95% (light gray, $\mu\pm2\sigma$) of the area under the curve.
+When the distribution is no longer symmetric $Mean\neq Median$.
+Execute the second line of code to see such a distribution with the mean again as red line and the median as blue line.
 
 
 
@@ -179,6 +180,7 @@ When the distribution is no longer symmetric
 `@pre_exercise_code`
 ```{r}
 library(ggplot2)
+library(sn)
 x <- seq(-4, 4,by=0.01 )
 x2<-seq(-1, 1,by=0.01 )
 x3<-seq(-2, 2,by=0.01 )
@@ -186,6 +188,7 @@ n.dist<-data.frame(x=x,y=dnorm(x=x, mean=0, sd=1))
 n.dist.sd <- data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
 n.dist.sd2 <- data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
 p.norm <- ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
+
 ```
 
 `@sample_code`
@@ -226,7 +229,7 @@ Execute the code on the right to view a boxplot.
 
 Compared to a barplot, the boxplot contains more information.
 The line in the middle of the box represents the median. That is, 50% of the data lie above this line and 50% below.
-If this line is shifted upwards or downwards from the middle, the data is skewed, i.e. not symetrically distributed around the mean.
+If this line is shifted upwards or downwards from the middle, the data is skewed, i.e. not symmetrically distributed around the mean.
 
 `@hint`
 
