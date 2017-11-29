@@ -29,15 +29,15 @@ my.data <-
   mutate(weight=volume+25+rnorm(n*2,0,10))
 
 ```
-Explore a new data set. This data set shows brain?? volumes of 100 male and 100 female participants as well as their body weight.
+Explore a new data set. This data set shows brain volumes of 100 male and 100 female participants and their body weight.
 
 
 `@instructions`
 We have created the variable my.data in the workspace. 
-1. Use `summary()` to look at its structure.
-2. Calculate the mean of volume in the my.data dataframe. 
-3. Use `aggregate()` to calculate the mean for each give gender
-4. Do the same for the standard deviation
+Use `summary()` to look at its structure.
+Calculate the mean of volume in the my.data dataframe. 
+Use `aggregate()` to calculate the mean for each give gender.
+Do the same for the standard deviation.
 
 `@sample_code`
 ```{r}
@@ -110,7 +110,7 @@ p.bar.data<-
 
 `@instructions`
 
-We created a new dataframe (`p.bar.data`) that contains the mean and standard error of the mean ($\frac{SD}{\sqrt{N}}$) for the volume for each gender.
+We created a new dataframe (`p.bar.data`) that contains the mean and standard error of the mean ($\frac{SD}{\sqrt{N}}$) for the brain volume for each gender.
 
 1. Make a simple barplot and assign it to the variable p.bar
 2. Add error bars to the bar plot.
@@ -149,6 +149,59 @@ success_msg("Good work!")
 ```
 
 
+
+
+---
+## Central tendency, dispersion, and skew
+
+```yaml
+type: NormalExercise
+key: 2190a55148
+lang: r
+xp: 100
+skills: 1
+```
+You can find additional, more in depth material
+[Here](https://www.youtube.com/watch?v=fv5QB3eK7jA) or 
+[here](https://www.youtube.com/watch?v=HnMGKsupF8Q) to explain mean, variance, and skew of a distribution. 
+
+`@instructions`
+We already introduced you to a central tendency measure of a distribution (mean, median) and to the spread (dispersion) (variance, standard deviation).
+A normal distribution is symmetrical, that is $Mean = Median$.
+Execute the first line of code and you will see a density function of a standard normal distribution with $\mu=0$ (red line) and the median (blue dashed line).
+The shaded areas cover ~67% (dark grey, $\mu\pm1sd$) respectively ~95% (light grey, $\mu\pm2sd$) of the area under the curve.
+When the distribution is no longer symmetric 
+
+
+
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+x <- seq(-4, 4,by=0.01 )
+x2<-seq(-1, 1,by=0.01 )
+x3<-seq(-2, 2,by=0.01 )
+n.dist<-data.frame(x=x,y=dnorm(x=x, mean=0, sd=1))
+n.dist.sd<-data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
+n.dist.sd2<-data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
+p.norm<-ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
+
+```
+
+`@sample_code`
+```{r}
+p.norm
+```
+
+`@solution`
+```{r}
+p.norm
+```
+
+`@sct`
+```{r}
+
+```
 ---
 ## Boxplot
 
@@ -163,10 +216,10 @@ skills: 1
 
 `@instructions`
 
-[Here](https://www.youtube.com/watch?v=fv5QB3eK7jA) you will find an explanation of mean, variance, and skew of a distribution. 
+To describe your data it is often not sufficient to show the mean and the standard deviation as a measure of spread.
 
 To get a feeling for your data it is often beneficial to plot it 
-in several ways that also include standard deviation and skew. 
+in several ways that also include spread (dispersion) and skew. 
 One example is the so called boxplot. 
 Execute the code on the right to view a boxplot.
 
