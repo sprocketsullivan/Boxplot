@@ -110,7 +110,7 @@ p.bar.data<-
 
 `@instructions`
 
-We created a new dataframe (`p.bar.data`) that contains the mean and standard error of the mean ($\frac{SD}{\sqrt(N)}$) for the volume for each gender.
+We created a new dataframe (`p.bar.data`) that contains the mean and standard error of the mean ($\frac{SD}{\sqrt{N}}$) for the volume for each gender.
 
 1. Make a simple barplot and assign it to the variable p.bar
 2. Add error bars to the bar plot.
@@ -163,17 +163,16 @@ skills: 1
 
 `@instructions`
 
-Here you will find an explanation of central tendency like mean and median 
-and the second and third moment of a distribution.
-[insert plot here, link to material, see here for explanation]
-To get a good feeling for your data it is often beneficial to plot it 
-in several ways that also include second and third moments
-one example is the so called boxplot. 
+[Here](https://www.youtube.com/watch?v=fv5QB3eK7jA) you will find an explanation of mean, variance, and skew of a distribution. 
+
+To get a feeling for your data it is often beneficial to plot it 
+in several ways that also include standard deviation and skew. 
+One example is the so called boxplot. 
 Execute the code on the right to view a boxplot.
 
 Compared to a barplot, the boxplot contains more information.
-The line in the middle of the box represents the median. If this line is shifted upwards or downwards
-of the middle, the data is skewed (not symetrically distributed around the mean).
+The line in the middle of the box represents the median. That is, 50% of the data lie above this line and 50% below.
+If this line is shifted upwards or downwards from the middle, the data is skewed, i.e. not symetrically distributed around the mean.
 
 `@hint`
 
