@@ -35,9 +35,9 @@ Explore a new data set. This data set shows brain volumes of 100 male and 100 fe
 `@instructions`
 We have created the variable my.data in the workspace. 
 Use `summary()` to look at its structure.
-Calculate the mean of volume in the my.data dataframe. 
+Calculate the mean ($\mu$) of volume in the my.data dataframe. 
 Use `aggregate()` to calculate the mean for each give gender.
-Do the same for the standard deviation.
+Do the same for the standard deviation ($\sigma$).
 
 `@sample_code`
 ```{r}
@@ -110,7 +110,7 @@ p.bar.data<-
 
 `@instructions`
 
-We created a new dataframe (`p.bar.data`) that contains the mean and standard error of the mean ($\frac{SD}{\sqrt{N}}$) for the brain volume for each gender.
+We created a new dataframe (`p.bar.data`) that contains the mean and standard error of the mean ($\frac{\sigma}{\sqrt{N}}$) for the brain volume for each gender.
 
 1. Make a simple barplot and assign it to the variable p.bar
 2. Add error bars to the bar plot.
@@ -166,7 +166,7 @@ You can find additional, more in depth material
 [here](https://www.youtube.com/watch?v=HnMGKsupF8Q) to explain mean, variance, and skew of a distribution. 
 
 `@instructions`
-We already introduced you to a central tendency measure of a distribution (mean, median) and to the spread (dispersion) (variance, standard deviation).
+We already introduced you to a central tendency measure of a distribution (mean $\mu$, median) and to the spread (dispersion) (variance $\sigma^2$, standard deviation $\sigma$).
 A normal distribution is symmetrical, that is $Mean = Median$.
 Execute the first line of code and you will see a density function of a standard normal distribution with $\mu=0$ (red line) and the median (blue dashed line).
 The shaded areas cover ~67% (dark grey, $\mu\pm1sd$) respectively ~95% (light grey, $\mu\pm2sd$) of the area under the curve.
@@ -178,14 +178,14 @@ When the distribution is no longer symmetric
 
 `@pre_exercise_code`
 ```{r}
+library(ggplot2)
 x <- seq(-4, 4,by=0.01 )
 x2<-seq(-1, 1,by=0.01 )
 x3<-seq(-2, 2,by=0.01 )
 n.dist<-data.frame(x=x,y=dnorm(x=x, mean=0, sd=1))
-n.dist.sd<-data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
-n.dist.sd2<-data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
-p.norm<-ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
-
+n.dist.sd <- data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
+n.dist.sd2 <- data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
+p.norm <- ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
 ```
 
 `@sample_code`
@@ -217,6 +217,7 @@ skills: 1
 `@instructions`
 
 To describe your data it is often not sufficient to show the mean and the standard deviation as a measure of spread.
+
 
 To get a feeling for your data it is often beneficial to plot it 
 in several ways that also include spread (dispersion) and skew. 
