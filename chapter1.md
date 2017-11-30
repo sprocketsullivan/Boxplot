@@ -23,10 +23,10 @@ library(tidyr)
 library(dplyr)
 n<-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,1273,10),rnorm(n,1131,10)),gender=c(rep("male",n),rep("female",n)))
+my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
 my.data <-
   my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,10))
+  mutate(weight=volume+25+rnorm(n*2,0,100))
 
 ```
 Explore a new data set. This data set shows brain volumes of 100 male and 100 female participants and their body weight.
@@ -94,10 +94,10 @@ library(dplyr)
 library(ggplot2)
 n<-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,50,10),rnorm(n,40,10)),gender=c(rep("male",n),rep("female",n)))
+my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
 my.data <-
   my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,10))
+  mutate(weight=volume+25+rnorm(n*2,0,100))
 p.bar.data<-
   my.data %>% 
   group_by(gender) %>% 
@@ -166,7 +166,7 @@ You can find additional, more in depth material
 [here](https://www.youtube.com/watch?v=HnMGKsupF8Q) to explain mean, variance, and skew of a distribution. 
 
 `@instructions`
-We already introduced you to a central tendency measure of a distribution (mean $\mu$, median) and to the spread (dispersion) (variance $\sigma^2$, standard deviation $\sigma$).
+We already introduced you to central tendency measures of a distribution (mean $\mu$, median) and to the spread (dispersion) (variance $\sigma^2$, standard deviation $\sigma$).
 A normal distribution is symmetrical, that is $Mean = Median$.
 Execute the first line of code and you will see a density function of a standard normal distribution with $\mu=0$ (red line) and the median (blue dashed line).
 The shaded areas cover ~67% (dark gray, $\mu\pm1\sigma$) respectively ~95% (light gray, $\mu\pm2\sigma$) of the area under the curve.
@@ -184,26 +184,39 @@ library(sn)
 x <- seq(-4, 4,by=0.01 )
 x2<-seq(-1, 1,by=0.01 )
 x3<-seq(-2, 2,by=0.01 )
+x4 <- seq(-2, 6,by=0.01 )
 n.dist<-data.frame(x=x,y=dnorm(x=x, mean=0, sd=1))
-n.dist.sd <- data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
-n.dist.sd2 <- data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
-p.norm <- ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
+n.dist.sd<-data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
+n.dist.sd2<-data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
+p.norm<-ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
+n.dist.skew<-data.frame(x=x4,y=dsn(x=x4,alpha=5,omega=2))
+mean.skew<-mean(rsn(10000,alpha=5,omega=2))
+median.skew<- median(rsn(10000,alpha=5,omega=2))
+p.skew<-ggplot(aes(y=y,x=x4),data=n.dist.skew)+geom_line()+theme_classic()+geom_vline(aes(xintercept=mean.skew),colour="red")+geom_vline(aes(xintercept=median.skew),colour="blue",linetype=2)
+
 
 ```
 
 `@sample_code`
 ```{r}
+#plot density normal distribution
 p.norm
+#plot skewed distribution
+p.skew
 ```
 
 `@solution`
 ```{r}
+#plot density normal distribution
 p.norm
+#plot skewed distribution
+p.skew
+
 ```
 
 `@sct`
 ```{r}
-
+success_msg("Hope that is clear now!")
 ```
 ---
 ## Boxplot
@@ -215,21 +228,20 @@ lang: r
 xp: 100
 skills: 1
 ```
-
-
+As seen in the previous exercise, some distributions may be skewed. This can also apply to your collected data.
+To explore your data for such patterns it is often beneficial to plot it in mutliple ways that also include spread (dispersion) and skew. 
+One example is the so called boxplot. 
 `@instructions`
 
-To describe your data it is often not sufficient to show the mean and the standard deviation as a measure of spread.
-
-
-To get a feeling for your data it is often beneficial to plot it 
-in several ways that also include spread (dispersion) and skew. 
-One example is the so called boxplot. 
 Execute the code on the right to view a boxplot.
-
 Compared to a barplot, the boxplot contains more information.
 The line in the middle of the box represents the median. That is, 50% of the data lie above this line and 50% below.
-If this line is shifted upwards or downwards from the middle, the data is skewed, i.e. not symmetrically distributed around the mean.
+If this line is shifted upwards or downwards from the middle of the box, the data is skewed, i.e. not symmetrically distributed around the mean.
+Between the upper and lower bound of the box lie 50% % of the data. The lower bound is at 25% (first quartile) the upper at 75% (third quartile). 
+This range gives the so called inter quartile range `IQR`. The whiskers (small lines protruding from the box) have an intervall of `1.5*IQR` on each side of the box.
+Values outside this range are depicted as outliers by dots.
+
+See [e.g. here](http://www.physics.csbsju.edu/stats/box2.html) for more explanation and figures on boxplots.
 
 `@hint`
 
@@ -240,10 +252,10 @@ library(dplyr)
 library(ggplot2)
 n<-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,50,10),rnorm(n,40,10)),gender=c(rep("male",n),rep("female",n)))
+my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
 my.data <-
   my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,10))
+  mutate(weight=volume+25+rnorm(n*2,0,100))
 ```
 
 `@sample_code`
@@ -297,10 +309,10 @@ library(dplyr)
 library(ggplot2)
 n<-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,50,10),rnorm(n,40,10)),gender=c(rep("male",n),rep("female",n)))
+my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
 my.data <-
   my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,10))
+  mutate(weight=volume+25+rnorm(n*2,0,100))
 ```
 
 `@sample_code`
@@ -352,10 +364,10 @@ library(dplyr)
 library(ggplot2)
 n<-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,50,10),rnorm(n,40,10)),gender=c(rep("male",n),rep("female",n)))
+my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
 my.data <-
   my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,10))
+  mutate(weight=volume+25+rnorm(n*2,0,100))
 ```
 
 `@sample_code`
