@@ -23,7 +23,7 @@ library(tidyr)
 library(dplyr)
 n<-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,50,10),rnorm(n,40,10)),gender=c(rep("male",n),rep("female",n)))
+my.data<-data.frame(volume=c(rnorm(n,1273,10),rnorm(n,1131,10)),gender=c(rep("male",n),rep("female",n)))
 my.data <-
   my.data %>% 
   mutate(weight=volume+25+rnorm(n*2,0,10))
@@ -33,10 +33,10 @@ Explore a new data set. This data set shows brain volumes of 100 male and 100 fe
 
 
 `@instructions`
-We have created the variable my.data in the workspace. 
+We have created the variable my.data (a data.frame) in the workspace. 
 Use `summary()` to look at its structure.
 Calculate the mean ($\mu$) of volume in the my.data dataframe. 
-Use `aggregate()` to calculate the mean for each give gender.
+Use `aggregate()` to calculate the mean for each gender.
 Do the same for the standard deviation ($\sigma$).
 
 `@sample_code`
