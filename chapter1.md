@@ -1,457 +1,1124 @@
----
-title       : Beyond the barplot
-description : How to include distributional information in Figures.
-attachments :
-slides_link : 
----
-## Recap of last session
-
-```yaml
-type: NormalExercise
-lang: r
-xp: 50
-skills: 1
-key: 304c453ac8
-```
 
 
-`@pre_exercise_code`
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://assets-cdn.github.com">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+
+
+
+  <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-c9193575f18b28be82c0a963e144ff6fa7a809dd8ae003a1d1e5979bed3f7f00.css" integrity="sha256-yRk1dfGLKL6CwKlj4UT/b6eoCd2K4AOh0eWXm+0/fwA=" media="all" rel="stylesheet" />
+  <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-9ed815ea772b21ac723e5af484a801e4529591a0abda03969434dc16af6ecf16.css" integrity="sha256-ntgV6ncrIaxyPlr0hKgB5FKVkaCr2gOWlDTcFq9uzxY=" media="all" rel="stylesheet" />
+  
+  
+  
+  
+
+  <meta name="viewport" content="width=device-width">
+  
+  <title>Versuch/chapter1.md at master · UweSchoenebergCharite/Versuch</title>
+  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+  <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+  <meta property="fb:app_id" content="1401488693436528">
+
+    
+    <meta content="https://avatars2.githubusercontent.com/u/33687068?s=400&amp;v=4" property="og:image" /><meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="UweSchoenebergCharite/Versuch" property="og:title" /><meta content="https://github.com/UweSchoenebergCharite/Versuch" property="og:url" /><meta content="Contribute to Versuch development by creating an account on GitHub." property="og:description" />
+
+  <link rel="assets" href="https://assets-cdn.github.com/">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MjI3MDc1NjkxOjEzYWRjNTU4NjUyNzhhNzA3OGQxM2U2ZDZlYjNiZGY2YzIwNGJkOTk3ZjE4ZmU4MWUyY2IwNDg4YWFjZTU1MGQ=--28d95131985689f37e34df42de197a35b65a281c">
+  <meta name="pjax-timeout" content="1000">
+  <link rel="sudo-modal" href="/sessions/sudo_modal">
+  <meta name="request-id" content="A796:2F7E:208E742:3B9EDFC:5A217429" data-pjax-transient>
+  
+
+  <meta name="selected-link" value="repo_source" data-pjax-transient>
+
+  <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+<meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="https://collector.githubapp.com/github-external/browser_event" name="octolytics-event-url" /><meta content="A796:2F7E:208E742:3B9EDFC:5A217429" name="octolytics-dimension-request_id" /><meta content="iad" name="octolytics-dimension-region_edge" /><meta content="iad" name="octolytics-dimension-region_render" /><meta content="33687068" name="octolytics-actor-id" /><meta content="UweSchoenebergCharite" name="octolytics-actor-login" /><meta content="bd55209c6069130ed08a01a3898a20f8878694e7917658f963674ca1b806e4bd" name="octolytics-actor-hash" />
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" name="analytics-location" />
+
+
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+  
+
+      <meta name="hostname" content="github.com">
+  <meta name="user-login" content="UweSchoenebergCharite">
+
+      <meta name="expected-hostname" content="github.com">
+    <meta name="js-proxy-site-detection-payload" content="ZDViNDJkN2Y1ZDNjYTA3YjcxMTczYWQyYzNmNjMyY2FmYzAzYzRhMmY0OWU3NTg4ZTM0OWQwMWExZDRmYTgyOXx7InJlbW90ZV9hZGRyZXNzIjoiMTkzLjE3NS43My4yMTYiLCJyZXF1ZXN0X2lkIjoiQTc5NjoyRjdFOjIwOEU3NDI6M0I5RURGQzo1QTIxNzQyOSIsInRpbWVzdGFtcCI6MTUxMjE0MTg2NiwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+
+    <meta name="enabled-features" content="UNIVERSE_BANNER,FREE_TRIALS">
+
+  <meta name="html-safe-nonce" content="10bec7190316f6e49504bcf2fd86d65f4158bb88">
+
+  <meta http-equiv="x-pjax-version" content="60558c2099e97248f156d9fa04571cd1">
+  
+
+      <link href="https://github.com/UweSchoenebergCharite/Versuch/commits/master.atom" rel="alternate" title="Recent Commits to Versuch:master" type="application/atom+xml">
+
+  <meta name="description" content="Contribute to Versuch development by creating an account on GitHub.">
+  <meta name="go-import" content="github.com/UweSchoenebergCharite/Versuch git https://github.com/UweSchoenebergCharite/Versuch.git">
+
+  <meta content="33687068" name="octolytics-dimension-user_id" /><meta content="UweSchoenebergCharite" name="octolytics-dimension-user_login" /><meta content="112732516" name="octolytics-dimension-repository_id" /><meta content="UweSchoenebergCharite/Versuch" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="112732516" name="octolytics-dimension-repository_network_root_id" /><meta content="UweSchoenebergCharite/Versuch" name="octolytics-dimension-repository_network_root_nwo" /><meta content="true" name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" />
+
+
+    <link rel="canonical" href="https://github.com/UweSchoenebergCharite/Versuch/blob/master/chapter1.md" data-pjax-transient>
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
+
+<meta name="theme-color" content="#1e2327">
+
+
+
+  </head>
+
+  <body class="logged-in env-production emoji-size-boost page-blob">
+    
+
+  <div class="position-relative js-header-wrapper ">
+    <a href="#start-of-content" tabindex="1" class="bg-black text-white p-3 show-on-focus js-skip-to-content">Skip to content</a>
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+
+    
+    
+    
+
+
+
+        
+<header class="Header  f5" role="banner">
+  <div class="d-flex px-3 flex-justify-between container-lg">
+    <div class="d-flex flex-justify-between">
+      <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+
+
+    </div>
+
+    <div class="HeaderMenu d-flex flex-justify-between flex-auto">
+      <div class="d-flex">
+            <div class="">
+              <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/UweSchoenebergCharite/Versuch/search" class="js-site-search-form" data-scoped-search-url="/UweSchoenebergCharite/Versuch/search" data-unscoped-search-url="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+        <a href="/UweSchoenebergCharite/Versuch/blob/master/chapter1.md" class="header-search-scope no-underline">This repository</a>
+      <input type="text"
+        class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable"
+        data-hotkey="s"
+        name="q"
+        value=""
+        placeholder="Search"
+        aria-label="Search this repository"
+        data-unscoped-placeholder="Search GitHub"
+        data-scoped-placeholder="Search"
+        autocapitalize="off">
+        <input type="hidden" class="js-site-search-type-field" name="type" >
+    </label>
+</form></div>
+
+            </div>
+
+          <ul class="d-flex pl-2 flex-items-center text-bold list-style-none" role="navigation">
+            <li>
+              <a href="/pulls" aria-label="Pull requests you created" class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+                Pull requests
+</a>            </li>
+            <li>
+              <a href="/issues" aria-label="Issues you created" class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:issues context:user" data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+                Issues
+</a>            </li>
+                <li>
+                  <a href="/marketplace" class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:marketplace context:user" data-selected-links=" /marketplace">
+                    Marketplace
+</a>                </li>
+            <li>
+              <a href="/explore" class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore">
+                Explore
+</a>            </li>
+          </ul>
+      </div>
+
+      <div class="d-flex">
+        
+<ul class="user-nav d-flex flex-items-center list-style-none" id="user-links">
+  <li class="dropdown js-menu-container">
+    <span class="d-inline-block  px-2">
+      
+
+    </span>
+  </li>
+
+  <li class="dropdown js-menu-container">
+    <details class="dropdown-details details-reset js-dropdown-details d-flex px-2 flex-items-center">
+      <summary class="HeaderNavlink"
+         aria-label="Create new…"
+         data-ga-click="Header, create new, icon:add">
+        <svg aria-hidden="true" class="octicon octicon-plus float-left mr-1 mt-1" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"/></svg>
+        <span class="dropdown-caret mt-1"></span>
+      </summary>
+
+      <ul class="dropdown-menu dropdown-menu-sw">
+        
+<a class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a class="dropdown-item" href="/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+<a class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, create new gist">
+  New gist
+</a>
+
+  <a class="dropdown-item" href="/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+  <div class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="UweSchoenebergCharite/Versuch">This repository</span>
+  </div>
+    <a class="dropdown-item" href="/UweSchoenebergCharite/Versuch/issues/new" data-ga-click="Header, create new issue">
+      New issue
+    </a>
+
+      </ul>
+    </details>
+  </li>
+
+  <li class="dropdown js-menu-container">
+
+    <details class="dropdown-details details-reset js-dropdown-details d-flex pl-2 flex-items-center">
+      <summary class="HeaderNavlink name mt-1"
+        aria-label="View profile and more"
+        data-ga-click="Header, show menu, icon:avatar">
+        <img alt="@UweSchoenebergCharite" class="avatar float-left mr-1" src="https://avatars0.githubusercontent.com/u/33687068?s=40&amp;v=4" height="20" width="20">
+        <span class="dropdown-caret"></span>
+      </summary>
+
+      <ul class="dropdown-menu dropdown-menu-sw">
+        <li class="dropdown-header header-nav-current-user css-truncate">
+          Signed in as <strong class="css-truncate-target">UweSchoenebergCharite</strong>
+        </li>
+
+        <li class="dropdown-divider"></li>
+
+        <li><a class="dropdown-item" href="/UweSchoenebergCharite" data-ga-click="Header, go to profile, text:your profile">
+          Your profile
+        </a></li>
+        <li><a class="dropdown-item" href="/UweSchoenebergCharite?tab=stars" data-ga-click="Header, go to starred repos, text:your stars">
+          Your stars
+        </a></li>
+          <li><a class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, your gists, text:your gists">Your Gists</a></li>
+
+        <li class="dropdown-divider"></li>
+
+        <li><a class="dropdown-item" href="https://help.github.com" data-ga-click="Header, go to help, text:help">
+          Help
+        </a></li>
+
+        <li><a class="dropdown-item" href="/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+          Settings
+        </a></li>
+
+        <li><!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="bNXuK7sHX6SvMchc1SDYgmfzmk2B42AS7Q5EPeplc3cX0vbFqE075W+aH2ZWX9+RWqcUCsaMZ38P8cf8bnHOdQ==" /></div>
+          <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+            Sign out
+          </button>
+        </form></li>
+      </ul>
+    </details>
+  </li>
+</ul>
+
+
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/logout" class="sr-only right-0" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="V3eV+QlwkKPzHDkeMzZhUIUwUHCUzUEki6O95O7PhRkscI0XGjr04jO37iSwSWZDuGTeN9OiRklpXD4lats4Gw==" /></div>
+          <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+            Sign out
+          </button>
+</form>      </div>
+    </div>
+  </div>
+</header>
+
+
+      
+
+  </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+    <div id="js-flash-container">
+</div>
+
+
+
+  <div role="main">
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode">
+    <div id="js-repo-pjax-container" data-pjax-container>
+      
+
+
+
+
+
+    <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav ">
+      <div class="repohead-details-container clearfix container ">
+
+        <ul class="pagehead-actions">
+  <li>
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="QC1KAP+kZ4mPCD9Q/DxFjt7uZlFRDF5wZTTSuKHQ8nLcPSPSd8w+r/ZDGHmsaUbJH3PqDkO7sUKbgstLkDO7Mw==" /></div>      <input class="form-control" id="repository_id" name="repository_id" type="hidden" value="112732516" />
+
+        <div class="select-menu js-menu-container js-select-menu">
+          <a href="/UweSchoenebergCharite/Versuch/subscription"
+            class="btn btn-sm btn-with-count select-menu-button js-menu-target"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Toggle repository notifications menu"
+            data-ga-click="Repository, click Watch settings, action:blob#show">
+            <span class="js-select-button">
+                <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                Watch
+            </span>
+          </a>
+            <a class="social-count js-social-count"
+              href="/UweSchoenebergCharite/Versuch/watchers"
+              aria-label="0 users are watching this repository">
+              0
+            </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content">
+            <div class="select-menu-header js-navigation-enable" tabindex="-1">
+              <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+              <span class="select-menu-title">Notifications</span>
+            </div>
+
+              <div class="select-menu-list js-navigation-container" role="menu">
+
+                <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+                  <div class="select-menu-item-text">
+                    <input checked="checked" id="do_included" name="do" type="radio" value="included" />
+                    <span class="select-menu-item-heading">Not watching</span>
+                    <span class="description">Be notified when participating or @mentioned.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                      Watch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_subscribed" name="do" type="radio" value="subscribed" />
+                    <span class="select-menu-item-heading">Watching</span>
+                    <span class="description">Be notified of all conversations.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                        Unwatch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_ignore" name="do" type="radio" value="ignore" />
+                    <span class="select-menu-item-heading">Ignoring</span>
+                    <span class="description">Never be notified.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-mute" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8 2.81v10.38c0 .67-.81 1-1.28.53L3 10H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h2l3.72-3.72C7.19 1.81 8 2.14 8 2.81zm7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06L11.44 8 9.47 9.97l1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06L13.56 8l1.97-1.97z"/></svg>
+                        Stop ignoring
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/UweSchoenebergCharite/Versuch/unstar" class="starred js-social-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="mGQLpcxn0j1++gyLfo9a0eTxQQ3/omk+nePwvlgCx8PvOQiE3ORgNA14sTmhPcfTgY2n7anjEQk0M5X2lwy4mw==" /></div>
+      <input type="hidden" name="context" value="repository"></input>
+      <button
+        type="submit"
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Unstar this repository" title="Unstar UweSchoenebergCharite/Versuch"
+        data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"/></svg>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="/UweSchoenebergCharite/Versuch/stargazers"
+           aria-label="0 users starred this repository">
+          0
+        </a>
+</form>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/UweSchoenebergCharite/Versuch/star" class="unstarred js-social-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="RgwfZ+oE7T2TNqFdx7K4OMz09NqK20XcWcBHakf/reng7zoKw4pcoRdw0PhX2KSFOfjcd8mH50kgcqi95eb9Xw==" /></div>
+      <input type="hidden" name="context" value="repository"></input>
+      <button
+        type="submit"
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Star this repository" title="Star UweSchoenebergCharite/Versuch"
+        data-ga-click="Repository, click star button, action:blob#show; text:Star">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"/></svg>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="/UweSchoenebergCharite/Versuch/stargazers"
+           aria-label="0 users starred this repository">
+          0
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/UweSchoenebergCharite/Versuch/fork" class="btn-with-count" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="hoSXm+1MaGwZ+GIKaQH70v60rzIFc3tcx0qBYuWTAywyN0jOaKVeZ0lvv6IjX4LVjA3x5OwoASNU68M/Qdb0tQ==" /></div>
+            <button
+                type="submit"
+                class="btn btn-sm btn-with-count"
+                data-ga-click="Repository, show fork modal, action:blob#show; text:Fork"
+                title="Fork your own copy of UweSchoenebergCharite/Versuch to your account"
+                aria-label="Fork your own copy of UweSchoenebergCharite/Versuch to your account">
+              <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+              Fork
+            </button>
+</form>
+    <a href="/UweSchoenebergCharite/Versuch/network" class="social-count"
+       aria-label="0 users forked this repository">
+      0
+    </a>
+  </li>
+</ul>
+
+        <h1 class="public ">
+  <svg aria-hidden="true" class="octicon octicon-repo" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+  <span class="author" itemprop="author"><a href="/UweSchoenebergCharite" class="url fn" rel="author">UweSchoenebergCharite</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a href="/UweSchoenebergCharite/Versuch" data-pjax="#js-repo-pjax-container">Versuch</a></strong>
+
+</h1>
+
+      </div>
+      
+<nav class="reponav js-repo-nav js-sidenav-container-pjax container"
+     itemscope
+     itemtype="http://schema.org/BreadcrumbList"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container">
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="/UweSchoenebergCharite/Versuch" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /UweSchoenebergCharite/Versuch" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+    <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a href="/UweSchoenebergCharite/Versuch/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /UweSchoenebergCharite/Versuch/issues" itemprop="url">
+        <svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"/></svg>
+        <span itemprop="name">Issues</span>
+        <span class="Counter">0</span>
+        <meta itemprop="position" content="2">
+</a>    </span>
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="/UweSchoenebergCharite/Versuch/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /UweSchoenebergCharite/Versuch/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="Counter">0</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+    <a href="/UweSchoenebergCharite/Versuch/projects" class="js-selected-navigation-item reponav-item" data-hotkey="g b" data-selected-links="repo_projects new_repo_project repo_project /UweSchoenebergCharite/Versuch/projects">
+      <svg aria-hidden="true" class="octicon octicon-project" height="16" version="1.1" viewBox="0 0 15 16" width="15"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      Projects
+      <span class="Counter" >0</span>
+</a>
+    <a href="/UweSchoenebergCharite/Versuch/wiki" class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /UweSchoenebergCharite/Versuch/wiki">
+      <svg aria-hidden="true" class="octicon octicon-book" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"/></svg>
+      Wiki
+</a>
+
+  <a href="/UweSchoenebergCharite/Versuch/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors dependency_graph pulse /UweSchoenebergCharite/Versuch/pulse">
+    <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"/></svg>
+    Insights
+</a>
+    <a href="/UweSchoenebergCharite/Versuch/settings" class="js-selected-navigation-item reponav-item" data-selected-links="repo_settings repo_branch_settings hooks integration_installations repo_keys_settings /UweSchoenebergCharite/Versuch/settings">
+      <svg aria-hidden="true" class="octicon octicon-gear" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 8.77v-1.6l-1.94-.64-.45-1.09.88-1.84-1.13-1.13-1.81.91-1.09-.45-.69-1.92h-1.6l-.63 1.94-1.11.45-1.84-.88-1.13 1.13.91 1.81-.45 1.09L0 7.23v1.59l1.94.64.45 1.09-.88 1.84 1.13 1.13 1.81-.91 1.09.45.69 1.92h1.59l.63-1.94 1.11-.45 1.84.88 1.13-1.13-.92-1.81.47-1.09L14 8.75v.02zM7 11c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"/></svg>
+      Settings
+</a>
+</nav>
+
+
+    </div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+  <a href="/UweSchoenebergCharite/Versuch/blob/a5eeafc37ee41cfe3a0dc362a5506f9316fe6f7f/chapter1.md" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <!-- blob contrib key: blob_contributors:v21:0d9b1fb3260235801eabce45c6d25123 -->
+
+  <div class="file-navigation js-zeroclipboard-container">
+    
+<div class="select-menu branch-select-menu js-menu-container js-select-menu float-left">
+  <button class=" btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
+    
+    type="button" aria-label="Switch branches or tags" aria-expanded="false" aria-haspopup="true">
+      <i>Branch:</i>
+      <span class="js-select-button css-truncate-target">master</span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax>
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+        <span class="select-menu-title">Switch branches/tags</span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Find or create a branch…" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Find or create a branch…">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Find or create a branch…" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open selected"
+               href="/UweSchoenebergCharite/Versuch/blob/master/chapter1.md"
+               data-name="master"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                master
+              </span>
+            </a>
+        </div>
+
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/UweSchoenebergCharite/Versuch/branches" class="js-create-branch select-menu-item select-menu-new-item-form js-navigation-item js-new-item-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="CyPxWRmfv4azR4HNdx7h91OKy5izTLctpLQS4IIDHdf32bMujc/+ts4pOagK7vSEZ7Ft8V43U2vgZStA4a+hHg==" /></div>
+          <svg aria-hidden="true" class="octicon octicon-git-branch select-menu-item-icon" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M10 5c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v.3c-.02.52-.23.98-.63 1.38-.4.4-.86.61-1.38.63-.83.02-1.48.16-2 .45V4.72a1.993 1.993 0 0 0-1-3.72C.88 1 0 1.89 0 3a2 2 0 0 0 1 1.72v6.56c-.59.35-1 .99-1 1.72 0 1.11.89 2 2 2 1.11 0 2-.89 2-2 0-.53-.2-1-.53-1.36.09-.06.48-.41.59-.47.25-.11.56-.17.94-.17 1.05-.05 1.95-.45 2.75-1.25S8.95 7.77 9 6.73h-.02C9.59 6.37 10 5.73 10 5zM2 1.8c.66 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2C1.35 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2zm0 12.41c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm6-8c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+            <div class="select-menu-item-text">
+              <span class="select-menu-item-heading">Create branch: <span class="js-new-item-name"></span></span>
+              <span class="description">from ‘master’</span>
+            </div>
+            <input type="hidden" name="name" id="name" class="js-new-item-value">
+            <input type="hidden" name="branch" id="branch" value="master">
+            <input type="hidden" name="path" id="path" value="chapter1.md">
+</form>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    <div class="BtnGroup float-right">
+      <a href="/UweSchoenebergCharite/Versuch/find/master"
+            class="js-pjax-capture-input btn btn-sm BtnGroup-item"
+            data-pjax
+            data-hotkey="t">
+        Find file
+      </a>
+      <button aria-label="Copy file path to clipboard" class="js-zeroclipboard btn btn-sm BtnGroup-item tooltipped tooltipped-s" data-copied-hint="Copied!" type="button">Copy path</button>
+    </div>
+    <div class="breadcrumb js-zeroclipboard-target">
+      <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="/UweSchoenebergCharite/Versuch"><span>Versuch</span></a></span></span><span class="separator">/</span><strong class="final-path">chapter1.md</strong>
+    </div>
+  </div>
+
+
+  <include-fragment class="commit-tease" src="/UweSchoenebergCharite/Versuch/contributors/master/chapter1.md">
+    <div>
+      Fetching contributors&hellip;
+    </div>
+
+    <div class="commit-tease-contributors">
+      <img alt="" class="loader-loading float-left" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32-EAF2F5.gif" width="16" />
+      <span class="loader-error">Cannot retrieve contributors at this time</span>
+    </div>
+</include-fragment>
+
+  <div class="file">
+    <div class="file-header">
+  <div class="file-actions">
+
+    <div class="BtnGroup">
+      <a href="/UweSchoenebergCharite/Versuch/raw/master/chapter1.md" class="btn btn-sm BtnGroup-item" id="raw-url">Raw</a>
+        <a href="/UweSchoenebergCharite/Versuch/blame/master/chapter1.md" class="btn btn-sm js-update-url-with-hash BtnGroup-item" data-hotkey="b">Blame</a>
+      <a href="/UweSchoenebergCharite/Versuch/commits/master/chapter1.md" class="btn btn-sm BtnGroup-item" rel="nofollow">History</a>
+    </div>
+
+        <a class="btn-octicon tooltipped tooltipped-nw"
+           href="https://desktop.github.com"
+           aria-label="Open this file in GitHub Desktop"
+           data-ga-click="Repository, open with desktop, type:mac">
+            <svg aria-hidden="true" class="octicon octicon-device-desktop" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"/></svg>
+        </a>
+
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/UweSchoenebergCharite/Versuch/edit/master/chapter1.md" class="inline-form js-update-url-with-hash" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="FpV/l0n5LtxNkq8lwNtgDpYFvmplPcO6H6UdSeOpO3ICkCsiYxr62HvU/WEb4yl7IJXVXSj11FThd9bObxOF4w==" /></div>
+          <button class="btn-octicon tooltipped tooltipped-nw" type="submit"
+            aria-label="Edit this file" data-hotkey="e" data-disable-with>
+            <svg aria-hidden="true" class="octicon octicon-pencil" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg>
+          </button>
+</form>        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/UweSchoenebergCharite/Versuch/delete/master/chapter1.md" class="inline-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="huCJf7WtyEN8GjRQuuGtKv0eN1iX1RpTvswAJbdYpwWImEDuXfym9FvD7l5Vzl6TCrHEC77+zKcQ9C2puvVfUQ==" /></div>
+          <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
+            aria-label="Delete this file" data-disable-with>
+            <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
+          </button>
+</form>  </div>
+
+  <div class="file-info">
+      462 lines (372 sloc)
+      <span class="file-info-divider"></span>
+    12.1 KB
+  </div>
+</div>
+
+    
+  <div id="readme" class="readme blob instapaper_body">
+    <article class="markdown-body entry-content" itemprop="text"><table data-table-type="yaml-metadata">
+  <thead>
+  <tr>
+  <th>title</th>
+  <th>description</th>
+  <th>attachments</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><div>Insert the chapter title here</div></td>
+  <td><div>Insert the chapter description here</div></td>
+  <td><div><table>
+  <thead>
+  <tr>
+  <th>slides_link</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td><div><a href="https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf">https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf</a></div></td>
+  </tr>
+  </tbody>
+</table>
+</div></td>
+  </tr>
+  </tbody>
+</table>
+
+<h2><a href="#recap-of-last-session" aria-hidden="true" class="anchor" id="user-content-recap-of-last-session"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Recap of last session</h2>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">type</span>: <span class="pl-s">NormalExercise</span>
+<span class="pl-ent">lang</span>: <span class="pl-s">r</span>
+<span class="pl-ent">xp</span>: <span class="pl-c1">50</span>
+<span class="pl-ent">skills</span>: <span class="pl-c1">1</span>
+<span class="pl-ent">key</span>: <span class="pl-s">304c453ac8</span></pre></div>
+<p>100 men and 100 women agreed to have their brain volume as well as their body weight measured. We put the resulting data into variable <code>my.data</code> in your R workspace. <code>my.data</code> is of type <code>data frame</code> (see Chapter 5 of course "Introduction to R")</p>
+<p><code>@instructions</code></p>
+<ul>
+<li>Use <a href="https://www.rdocumentation.org/packages/base/versions/3.4.3/topics/summary" rel="nofollow"><code>summary()</code></a> on <code>my.data</code> to have a look at its structure.</li>
+<li>Calculate the mean ($\mu$) of brain volume in the my.data dataframe.</li>
+<li>Use <a href="https://www.rdocumentation.org/packages/stats/versions/3.4.3/topics/aggregate" rel="nofollow"><code>aggregate()</code></a> to calculate the mean for each gender.</li>
+<li>Do the same for the standard deviation ($\sigma$).</li>
+</ul>
+<p><code>@hint</code>
+Have a look at the plot. Which color does the point with the lowest rating have?</p>
+<p><code>@pre_exercise_code</code></p>
+<pre lang="{r}"><code># The pre exercise code runs code to initialize the user's workspace.
 # You can use it to load packages, initialize datasets and draw a plot in the viewer
 library(tidyr)
 library(dplyr)
-n<-100
+n&lt;-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
-my.data <-
-  my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,100))
-
-```
-Explore a new data set. This data set shows brain volumes of 100 male and 100 female participants and their body weight.
-
-
-`@instructions`
-We have created the variable my.data (a data.frame) in the workspace. 
-Use `summary()` to look at its structure.
-Calculate the mean ($\mu$) of volume in the my.data dataframe. 
-Use `aggregate()` to calculate the mean for each gender.
-Do the same for the standard deviation ($\sigma$).
-
-`@sample_code`
-```{r}
-# summary(my.data)
+my.data&lt;-data.frame(gender=c(rep("male",n),rep("female",n)), brain=c(rnorm(n,1273,100),rnorm(n,1131,100)))
+my.data &lt;-
+  my.data %&gt;% 
+  mutate(body=brain+25+rnorm(n*2,0,100))
+</code></pre>
+<p><code>@sample_code</code></p>
+<pre lang="{r}"><code># summary(my.data)
 
 
-#average volume
+#average brain
 
 
-#aggregate over gender and calculate the volume
+#aggregate over gender and calculate the brain volume
 
 
-#calculate the standard deviation
-```
+#aggregate over gender and calculate the standard deviation
 
-`@solution`
-```{r}
-# summary(my.data)
+</code></pre>
+<p><code>@solution</code></p>
+<pre lang="{r}"><code># summary(my.data)
 summary(my.data)
-#average volume
-mean(my.data$volume)
-#aggregate over gender and calculate the volume
-aggregate(my.data$volume,list(my.data$gender),mean)
-#calculate also the standard deviation
-aggregate(my.data$volume,list(my.data$gender),sd)
-```
 
-`@sct`
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+#average brain
+mean(my.data$brain)
+
+#aggregate over gender and calculate the brain volume
+aggregate(my.data$brain,list(my.data$gender),mean)
+
+#aggregate over gender and calculate the standard deviation
+aggregate(my.data$brain,list(my.data$gender),sd)
+</code></pre>
+<p><code>@sct</code></p>
+<pre lang="{r}"><code># SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
 success_msg("Good work!")
-```
-
-
-
-
----
-## Barplot
-
-```yaml
-type: NormalExercise
-lang: r
-xp: 50
-skills: 1
-key: 470e26deb0
-```
-`@pre_exercise_code`
-```{r}
-# The pre exercise code runs code to initialize the user's workspace.
+</code></pre>
+<hr>
+<h2><a href="#barplot" aria-hidden="true" class="anchor" id="user-content-barplot"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Barplot</h2>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">type</span>: <span class="pl-s">NormalExercise</span>
+<span class="pl-ent">lang</span>: <span class="pl-s">r</span>
+<span class="pl-ent">xp</span>: <span class="pl-c1">100</span>
+<span class="pl-ent">skills</span>: <span class="pl-c1">1</span>
+<span class="pl-ent">key</span>: <span class="pl-s">470e26deb0</span></pre></div>
+<p>We created a new dataframe (<code>p.bar.data</code>) that contains the mean and its standard error ($\frac{\sigma}{\sqrt{N}}$) for the brain volume of each gender.</p>
+<p><code>@instructions</code></p>
+<ul>
+<li>Make a simple bar plot and assign it to variable <code>p.bar</code></li>
+<li>Add error bars to the bar plot.</li>
+</ul>
+<p><code>@hint</code>
+Have a look at the plot. Which color does the point with the lowest rating have?</p>
+<p><code>@pre_exercise_code</code></p>
+<pre lang="{r}"><code># The pre exercise code runs code to initialize the user's workspace.
 # You can use it to load packages, initialize datasets and draw a plot in the viewer
 library(tidyr)
 library(dplyr)
 library(ggplot2)
-n<-100
+n&lt;-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
-my.data <-
-  my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,100))
-p.bar.data<-
-  my.data %>% 
-  group_by(gender) %>% 
-  summarise(mean_vol=mean(volume),
-         N=n(),
-         sem_vol=sd(volume)/sqrt(N)) %>% 
-  mutate(ymin=mean_vol-sem_vol,ymax=mean_vol+sem_vol)
-  
-```
-
-`@instructions`
-
-We created a new dataframe (`p.bar.data`) that contains the mean and standard error of the mean ($\frac{\sigma}{\sqrt{N}}$) for the brain volume for each gender.
-
-1. Make a simple barplot and assign it to the variable p.bar
-2. Add error bars to the bar plot.
-
-`@sample_code`
-```{r}
-# simple barplot assign this to variable p.bar
-p.bar <- ggplot(aes(y=______,x=_____),data=p.bar.data)+
+my.data&lt;-data.frame(gender=c(rep("male",n),rep("female",n)), brain=c(rnorm(n,1273,100),rnorm(n,1131,100)))
+my.data &lt;-
+  my.data %&gt;% 
+  mutate(body=brain+25+rnorm(n*2,0,100))
+p.bar.data&lt;-
+  my.data %&gt;% 
+  group_by(gender) %&gt;% 
+  summarise(N=n(),
+  		 mean_brain=mean(brain),         
+         sem_brain=sd(brain)/sqrt(N)) %&gt;% 
+  mutate(ymin=mean_brain-sem_brain,ymax=mean_brain+sem_brain)
+</code></pre>
+<p><code>@sample_code</code></p>
+<pre lang="{r}"><code># simple barplot assign this to variable p.bar
+p.bar &lt;- ggplot(aes(y=______,x=_____),data=p.bar.data)+
   geom_bar(stat="______")
 
-#add error bars to p.bar
-p.bar <- ggplot(aes(y=_____,x=_____),data=p.bar.data)+
+# add error bars to p.bar
+p.bar &lt;- ggplot(aes(y=_____,x=_____),data=p.bar.data)+
   geom_bar(stat="_____")+
   geom_errorbar(aes(ymin=______,ymax=_____),width=0.3)
 
-```
-
-`@solution`
-```{r}
-# simple barplot assign this to variable p.bar
-p.bar <- ggplot(aes(y=mean_vol,x=gender),data=p.bar.data)+
+# plot p.bar
+plot(p.bar)
+</code></pre>
+<p><code>@solution</code></p>
+<pre lang="{r}"><code># simple barplot assign this to variable p.bar
+p.bar &lt;- ggplot(aes(y=mean_brain,x=gender),data=p.bar.data)+
   geom_bar(stat="identity")
 
 #add error bars to p.bar
-p.bar <- ggplot(aes(y=mean_vol,x=gender),data=p.bar.data)+
+p.bar &lt;- ggplot(aes(y=mean_brain,x=gender),data=p.bar.data)+
   geom_bar(stat="identity")+
   geom_errorbar(aes(ymin=ymin,ymax=ymax),width=0.3)
 
-```
+# plot p.bar
+plot(p.bar)
 
-`@sct`
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
+</code></pre>
+<p><code>@sct</code></p>
+<pre lang="{r}"><code># SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
 
 success_msg("Good work!")
-```
-
-
-
-
----
-## Central tendency, dispersion, and skew
-
-```yaml
-type: NormalExercise
-key: 2190a55148
-lang: r
-xp: 100
-skills: 1
-```
-You can find additional, more in depth material
-[Here](https://www.youtube.com/watch?v=fv5QB3eK7jA) or 
-[here](https://www.youtube.com/watch?v=HnMGKsupF8Q) to explain mean, variance, and skew of a distribution. 
-
-`@instructions`
-We already introduced you to central tendency measures of a distribution (mean $\mu$, median) and to the spread (dispersion) (variance $\sigma^2$, standard deviation $\sigma$).
-A normal distribution is symmetrical, that is $Mean = Median$.
-Execute the first line of code and you will see a density function of a standard normal distribution with $\mu=0$ (red line) and the median (blue dashed line).
-The shaded areas cover ~67% (dark gray, $\mu\pm1\sigma$) respectively ~95% (light gray, $\mu\pm2\sigma$) of the area under the curve.
-When the distribution is no longer symmetric $Mean\neq Median$.
-Execute the second line of code to see such a distribution with the mean again as red line and the median as blue line.
-
-
-
-`@hint`
-
-`@pre_exercise_code`
-```{r}
-library(ggplot2)
+</code></pre>
+<hr>
+<h2><a href="#central-tendency-dispersion-and-skew" aria-hidden="true" class="anchor" id="user-content-central-tendency-dispersion-and-skew"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Central tendency, dispersion, and skew</h2>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">type</span>: <span class="pl-s">NormalExercise</span>
+<span class="pl-ent">key</span>: <span class="pl-s">2190a55148</span>
+<span class="pl-ent">lang</span>: <span class="pl-s">r</span>
+<span class="pl-ent">xp</span>: <span class="pl-c1">100</span>
+<span class="pl-ent">skills</span>: <span class="pl-c1">1</span></pre></div>
+<p>We already introduced you to central tendency measures of a distribution (mean ($\mu$) and median) and to the spread (dispersion) of a distribution (variance ($\sigma^2$) and standard deviation ($\sigma$)).</p>
+<p>A normal distribution is symmetrical, i.e. $Mean = Median$. Whenever a distribution is not symmetrical: $Mean\neq Median$.</p>
+<p>You can find additional, more in depth material about mean, variance, and skew of a distribution at
+<a href="https://www.youtube.com/watch?v=fv5QB3eK7jA" rel="nofollow">Moments of Distributions</a> and
+<a href="https://www.youtube.com/watch?v=HnMGKsupF8Q" rel="nofollow">Normal Distributions, Standard Deviations, Modality, Skewness and Kurtosis: Understanding concepts</a>.</p>
+<p><code>@instructions</code>
+The two commands provided in your workspace will each plot a probability density function (PDF). The red line represents $\mu$, the blue dashed line represents the median, repectively.</p>
+<ul>
+<li>
+<p><code>p.norm</code> plots a standard normal distribution ($\mu=0$). The dark gray area represents $\mu\pm1\sigma$ and covers ~67% of the area under the curve, the light gray area represents $\mu\pm2\sigma$ and covers ~95% of the area under the curve.</p>
+</li>
+<li>
+<p><code>p.skew</code> plots a non-symmetrical distribution.</p>
+</li>
+</ul>
+<p><code>@hint</code>
+Have a look at the plot. Which color does the point with the lowest rating have?</p>
+<p><code>@pre_exercise_code</code></p>
+<pre lang="{r}"><code>library(ggplot2)
 library(sn)
-x <- seq(-4, 4,by=0.01 )
-x2<-seq(-1, 1,by=0.01 )
-x3<-seq(-2, 2,by=0.01 )
-x4 <- seq(-2, 6,by=0.01 )
-n.dist<-data.frame(x=x,y=dnorm(x=x, mean=0, sd=1))
-n.dist.sd<-data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
-n.dist.sd2<-data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
-p.norm<-ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
-n.dist.skew<-data.frame(x=x4,y=dsn(x=x4,alpha=5,omega=2))
-mean.skew<-mean(rsn(10000,alpha=5,omega=2))
-median.skew<- median(rsn(10000,alpha=5,omega=2))
-p.skew<-ggplot(aes(y=y,x=x4),data=n.dist.skew)+geom_line()+theme_classic()+geom_vline(aes(xintercept=mean.skew),colour="red")+geom_vline(aes(xintercept=median.skew),colour="blue",linetype=2)
+x &lt;- seq(-4, 4,by=0.01 )
+x2&lt;-seq(-1, 1,by=0.01 )
+x3&lt;-seq(-2, 2,by=0.01 )
+x4 &lt;- seq(-2, 6,by=0.01 )
+n.dist&lt;-data.frame(x=x,y=dnorm(x=x, mean=0, sd=1))
+n.dist.sd&lt;-data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
+n.dist.sd2&lt;-data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
+p.norm&lt;-ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
+n.dist.skew&lt;-data.frame(x=x4,y=dsn(x=x4,alpha=5,omega=2))
+mean.skew&lt;-mean(rsn(10000,alpha=5,omega=2))
+median.skew&lt;- median(rsn(10000,alpha=5,omega=2))
+p.skew&lt;-ggplot(aes(y=y,x=x4),data=n.dist.skew)+geom_line()+theme_classic()+geom_vline(aes(xintercept=mean.skew),colour="red")+geom_vline(aes(xintercept=median.skew),colour="blue",linetype=2)
 
 
-```
-
-`@sample_code`
-```{r}
-#plot density normal distribution
+</code></pre>
+<p><code>@sample_code</code></p>
+<pre lang="{r}"><code>#plot density normal distribution
 p.norm
 #plot skewed distribution
 p.skew
-```
-
-`@solution`
-```{r}
-#plot density normal distribution
+</code></pre>
+<p><code>@solution</code></p>
+<pre lang="{r}"><code>#plot density normal distribution
 p.norm
 #plot skewed distribution
 p.skew
 
-```
-
-`@sct`
-```{r}
-success_msg("Hope that is clear now!")
-```
----
-## Boxplot
-
-```yaml
-type: NormalExercise
-key: 2a7427429d
-lang: r
-xp: 100
-skills: 1
-```
-As seen in the previous exercise, some distributions may be skewed. This can also apply to your collected data.
-To explore your data for such patterns it is often beneficial to plot it in mutliple ways that also include spread (dispersion) and skew. 
-One example is the so called boxplot. 
-`@instructions`
-
-Execute the code on the right to view a boxplot.
-Compared to a barplot, the boxplot contains more information.
-The line in the middle of the box represents the median. That is, 50% of the data lie above this line and 50% below.
-If this line is shifted upwards or downwards from the middle of the box, the data is skewed, i.e. not symmetrically distributed around the mean.
-Between the upper and lower bound of the box lie 50% % of the data. The lower bound is at 25% (first quartile) the upper at 75% (third quartile). 
-This range gives the so called inter quartile range `IQR`. The whiskers (small lines protruding from the box) have an intervall of `1.5*IQR` on each side of the box.
-Values outside this range are depicted as outliers by dots.
-
-See [e.g. here](http://www.physics.csbsju.edu/stats/box2.html) for more explanation and figures on boxplots.
-
-`@hint`
-
-`@pre_exercise_code`
-```{r}
-library(tidyr)
+</code></pre>
+<p><code>@sct</code></p>
+<pre lang="{r}"><code>success_msg("Hope that is clear now!")
+</code></pre>
+<hr>
+<h2><a href="#boxplot" aria-hidden="true" class="anchor" id="user-content-boxplot"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Boxplot</h2>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">type</span>: <span class="pl-s">NormalExercise</span>
+<span class="pl-ent">key</span>: <span class="pl-s">2a7427429d</span>
+<span class="pl-ent">lang</span>: <span class="pl-s">r</span>
+<span class="pl-ent">xp</span>: <span class="pl-c1">100</span>
+<span class="pl-ent">skills</span>: <span class="pl-c1">1</span></pre></div>
+<p>As seen in the previous exercise, some distributions may be skewed. This may also be true for data you collected. Therefore, it is a good idea to visualize your data by using plots that include spread (dispersion) and skew.
+One example in R is the function <a href="https://www.rdocumentation.org/packages/graphics/versions/3.4.3/topics/boxplot" rel="nofollow"><code>boxplot()</code></a>.</p>
+<p>A boxplot displays more information than a barplot:</p>
+<ul>
+<li>
+<p>A box describes the inter quartile range (<code>IQR</code>) of a distribution. 50% of the data points lie within the box. The bottom of the box lies at 25% (first quartile), the top at 75% (third quartile) of the data.</p>
+</li>
+<li>
+<p>The line in the center of the box represents the median, i.e. 50% of the data points lie above this value and 50% lie below this value. If this line is shifted off center, the data is skewed, i.e $Mean\neq Median$.</p>
+</li>
+<li>
+<p>The whiskers (small lines protruding from the box) have an intervall of <code>1.5*IQR</code> on each side of the box.</p>
+</li>
+<li>
+<p>Data points outside the box are called outliers.</p>
+</li>
+</ul>
+<p>See <a href="http://www.physics.csbsju.edu/stats/box2.html" rel="nofollow">Box Plot: Display of Distribution</a> for further details on the layout of boxplots.</p>
+<p><code>@instructions</code>
+Execute the code on the right to view a boxplot. Outliers are depicted by dots.</p>
+<p><code>@hint</code>
+Have a look at the plot. Which color does the point with the lowest rating have?</p>
+<p><code>@pre_exercise_code</code></p>
+<pre lang="{r}"><code>library(tidyr)
 library(dplyr)
 library(ggplot2)
-n<-100
+n&lt;-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
-my.data <-
-  my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,100))
-```
-
-`@sample_code`
-```{r}
-p.box<-ggplot(aes(y=volume,x=gender),data=my.data)+
+my.data&lt;-data.frame(gender=c(rep("male",n),rep("female",n)), brain=c(rnorm(n,1273,100),rnorm(n,1131,100)))
+my.data &lt;-
+  my.data %&gt;% 
+  mutate(body=brain+25+rnorm(n*2,0,100))
+</code></pre>
+<p><code>@sample_code</code></p>
+<pre lang="{r}"><code>p.box&lt;-ggplot(aes(y=brain,x=gender),data=my.data)+
     geom_boxplot()
 plot(p.box)
-```
-
-`@solution`
-```{r}
-p.box<-ggplot(aes(y=volume,x=gender),data=my.data)+
+</code></pre>
+<p><code>@solution</code></p>
+<pre lang="{r}"><code>p.box&lt;-ggplot(aes(y=brain,x=gender),data=my.data)+
     geom_boxplot()
 plot(p.box)
-```
-
-`@sct`
-```{r}
-success_msg("Well done!")
-```
----
-## Boxplot and individual data
-
-```yaml
-type: NormalExercise
-key: 294e800201
-lang: r
-xp: 100
-skills: 1
-```
-
-
-`@instructions`
-To understand the rest of the boxplot it is convenient to overlay the 
-boxplot with the individual data via adding a jitter geom.
-
-Run the code on the right.
-
-50% of the data lie within the box (interquartile range `IQR`). 
-A large box thus signifies data that has a larger spread or variance.
-The whiskers (lines above and below box) are `1.5*IQR`. 
-The data points outside the whiskers are outliers. 
-
-
-`@hint`
-
-`@pre_exercise_code`
-```{r}
-library(tidyr)
+</code></pre>
+<p><code>@sct</code></p>
+<pre lang="{r}"><code>success_msg("Well done!")
+</code></pre>
+<hr>
+<h2><a href="#boxplot-and-individual-data-points" aria-hidden="true" class="anchor" id="user-content-boxplot-and-individual-data-points"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Boxplot and individual data points</h2>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">type</span>: <span class="pl-s">NormalExercise</span>
+<span class="pl-ent">key</span>: <span class="pl-s">ce9859ec20</span>
+<span class="pl-ent">lang</span>: <span class="pl-s">r</span>
+<span class="pl-ent">xp</span>: <span class="pl-c1">100</span>
+<span class="pl-ent">skills</span>: <span class="pl-c1">1</span></pre></div>
+<p>Overlaying a boxplot with the individual data points leads to a better understanding of the boxplot.</p>
+<p>Here, we will add a <a href="https://www.rdocumentation.org/packages/ggplot2/versions/2.2.1/topics/geom_jitter" rel="nofollow"><code>geom_jitter()</code></a>, which creates a scatterplot of your data.</p>
+<p><code>@instructions</code>
+Execute the code on the right to view a boxplot. Outliers are depicted by dots.</p>
+<p><code>@hint</code>
+Have a look at the plot. Which color does the point with the lowest rating have?</p>
+<p><code>@pre_exercise_code</code></p>
+<pre lang="{r}"><code>library(tidyr)
 library(dplyr)
 library(ggplot2)
-n<-100
+n&lt;-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
-my.data <-
-  my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,100))
-```
-
-`@sample_code`
-```{r}
-p.box<-ggplot(aes(y=volume,x=gender),data=my.data)+
+my.data&lt;-data.frame(gender=c(rep("male",n),rep("female",n)), brain=c(rnorm(n,1273,100),rnorm(n,1131,100)))
+my.data &lt;-
+  my.data %&gt;% 
+  mutate(body=brain+25+rnorm(n*2,0,100))
+</code></pre>
+<p><code>@sample_code</code></p>
+<pre lang="{r}"><code>p.box&lt;-ggplot(aes(y=brain,x=gender),data=my.data)+
     geom_boxplot()+
     geom_jitter(width=.1,col="red")
     
 plot(p.box)
-
-```
-
-`@solution`
-```{r}
-p.box<-ggplot(aes(y=volume,x=gender),data=my.data)+
+</code></pre>
+<p><code>@solution</code></p>
+<pre lang="{r}"><code>p.box&lt;-ggplot(aes(y=brain,x=gender),data=my.data)+
     geom_boxplot()+
     geom_jitter(width=.1,col="red")
     
 plot(p.box)
-```
-
-`@sct`
-```{r}
-success_msg("HoHo!")
-```
-
----
-## Beautiful Plots
-
-```yaml
-type: NormalExercise
-key: 901e2614c4
-lang: r
-xp: 100
-skills: 1
-```
-
-`@instructions`
-ggplot has excellent plotting capabilities that allow for a wide range of customisation.
-Here we first add some colour to the plot.
-
-
-`@hint`
-
-`@pre_exercise_code`
-```{r}
-library(tidyr)
+</code></pre>
+<p><code>@sct</code></p>
+<pre lang="{r}"><code>success_msg("HoHo!")
+</code></pre>
+<hr>
+<h2><a href="#plot-aesthetics" aria-hidden="true" class="anchor" id="user-content-plot-aesthetics"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Plot aesthetics</h2>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">type</span>: <span class="pl-s">NormalExercise</span>
+<span class="pl-ent">key</span>: <span class="pl-s"><span class="pl-pds">'</span>4331132383<span class="pl-pds">'</span></span>
+<span class="pl-ent">lang</span>: <span class="pl-s">r</span>
+<span class="pl-ent">xp</span>: <span class="pl-c1">100</span>
+<span class="pl-ent">skills</span>: <span class="pl-c1">1</span></pre></div>
+<p>library <code>ggplot2</code> offers excellent plotting capabilities that allow for a wide range of customisation. Function <a href="https://www.rdocumentation.org/packages/ggplot2/versions/2.2.1/topics/aes" rel="nofollow"><code>aes()</code></a>, e.g, describes how  data are mapped to visual properties (aesthetics) of geometric objects (geoms).</p>
+<p>Let's add some colour to the plot. For convenience, the plot commands can be assigned to a variable. We will use <code>p.box</code>. Overlays can be generated by adding several plot commands using <code>+</code>. To actually see the plot use  <a href="https://www.rdocumentation.org/packages/graphics/versions/3.4.3/topics/plot" rel="nofollow"><code>plot()</code></a> or just type in the name or the variable an execute.</p>
+<p><code>@instructions</code></p>
+<ul>
+<li>The first line of code will create a  boxplot with fill colours defined by gender</li>
+<li>Change the two colours look out for obvious stereotypes and do not use them! Why not use "pink" and "light blue"?</li>
+<li>Add a theme to remove a lot of clutter. One theme provided by R is <code>theme_classic()</code>. See [<code>ggtheme</code>] (<a href="https://www.rdocumentation.org/packages/ggplot2/versions/2.2.1/topics/ggtheme" rel="nofollow">https://www.rdocumentation.org/packages/ggplot2/versions/2.2.1/topics/ggtheme</a>) for more information.</li>
+<li>Remove the legend by setting the legend.position to "none"</li>
+</ul>
+<p><code>@hint</code>
+Have a look at the plot. Which color does the point with the lowest rating have?</p>
+<p><code>@pre_exercise_code</code></p>
+<pre lang="{r}"><code>library(tidyr)
 library(dplyr)
 library(ggplot2)
-n<-100
+n&lt;-100
 set.seed(123)
-my.data<-data.frame(volume=c(rnorm(n,1273,100),rnorm(n,1131,100)),gender=c(rep("male",n),rep("female",n)))
-my.data <-
-  my.data %>% 
-  mutate(weight=volume+25+rnorm(n*2,0,100))
-```
-
-`@sample_code`
-```{r}
-
-#first create boxplot with fill colours
-#defined by gender
-#leave next two lines untouched
-p.box<-
-  ggplot(aes(y=volume,x=gender,fill=gender),data=my.data) +
+my.data&lt;-data.frame(gender=c(rep("male",n),rep("female",n)), brain=c(rnorm(n,1273,100),rnorm(n,1131,100)))
+my.data &lt;-
+  my.data %&gt;% 
+  mutate(body=brain+25+rnorm(n*2,0,100))
+</code></pre>
+<p><code>@sample_code</code></p>
+<pre lang="{r}"><code>#boxplot
+p.box&lt;-
+  ggplot(aes(y=brain,x=gender,fill=gender),data=my.data) +
   geom_boxplot()
-#change the two colours look out for obvious stereotypes and do not use them!
-# Why not use "pink" and "light blue"
-p.box<- p.box+
+plot(p.box)
+# change the two colours 
+p.box&lt;- p.box+
   scale_fill_manual(values=c("_____","_____"))
-#add a theme to remove a lot of clutter
-#one such theme is theme_classic()
-p.box<- p.box+  
+plot(p.box)
+# add a theme 
+p.box&lt;- p.box+  
   theme_c_____()
-#remove the legend
-#by setting the legend.position to "none"
-p.box<- p.box+  
+plot(p.box)
+# remove the legend
+p.box&lt;- p.box+  
   theme(legend._____ = '_____')
-```
-
-`@solution`
-```{r}
-#first create boxplot with fill colours
-#defined by gender
-#leave next two lines untouched
-p.box<-
-  ggplot(aes(y=volume,x=gender,fill=gender),data=my.data) +
+plot(p.box)
+</code></pre>
+<p><code>@solution</code></p>
+<pre lang="{r}"><code>#boxplot
+p.box&lt;-
+  ggplot(aes(y=brain,x=gender,fill=gender),data=my.data) +
   geom_boxplot()
-#change the two colours look out for obvious stereotypes and do not use them!
-# Why not use "pink" and "light blue"
-p.box<- p.box+
+plot(p.box)
+# change the two colours 
+p.box&lt;- p.box+
   scale_fill_manual(values=c("pink","light blue"))
-#add a theme to remove a lot of clutter
-#one such theme is theme_classic()
-p.box<- p.box+  
+plot(p.box)
+# add a theme 
+p.box&lt;- p.box+  
   theme_classic()
-#remove the legend
-#by setting the legend.position to "none"
-p.box<- p.box+  
+plot(p.box)
+# remove the legend
+p.box&lt;- p.box+  
   theme(legend.position = 'none')
-```
+plot(p.box)
+</code></pre>
+<p><code>@sct</code></p>
+<pre lang="{r}"><code>success_msg("Well done!")
+</code></pre>
+<hr>
+<h2><a href="#relationship-between-variables" aria-hidden="true" class="anchor" id="user-content-relationship-between-variables"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relationship between variables</h2>
+<div class="highlight highlight-source-yaml"><pre><span class="pl-ent">type</span>: <span class="pl-s">NormalExercise</span>
+<span class="pl-ent">key</span>: <span class="pl-s">f621387b92</span>
+<span class="pl-ent">lang</span>: <span class="pl-s">r</span>
+<span class="pl-ent">xp</span>: <span class="pl-c1">100</span>
+<span class="pl-ent">skills</span>: <span class="pl-c1">1</span></pre></div>
+<p>Exercise Text</p>
+<p><code>@instructions</code>
+Exercise Instructions</p>
+<p><code>@hint</code>
+Exercise Hint</p>
+<p><code>@pre_exercise_code</code></p>
+<pre lang="{r}"><code></code></pre>
+<p><code>@sample_code</code></p>
+<pre lang="{r}"><code></code></pre>
+<p><code>@solution</code></p>
+<pre lang="{r}"><code></code></pre>
+<p><code>@sct</code></p>
+<pre lang="{r}"><code>
+</code></pre>
+</article>
+  </div>
 
-`@sct`
-```{r}
-success_msg("Well done!")
-```
+  </div>
 
----
-## Relationship between variables
+  <button type="button" data-facebox="#jump-to-line" data-facebox-class="linejump" data-hotkey="l" class="d-none">Jump to Line</button>
+  <div id="jump-to-line" style="display:none">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="" class="js-jump-to-line-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+      <input class="form-control linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line&hellip;" aria-label="Jump to line" autofocus>
+      <button type="submit" class="btn">Go</button>
+</form>  </div>
 
-```yaml
-type: NormalExercise
-key: f621387b92
-lang: r
-xp: 100
-skills: 1
-```
+  </div>
+  <div class="modal-backdrop js-touch-events"></div>
+</div>
+
+    </div>
+  </div>
+
+  </div>
+
+      
+<div class="footer container-lg px-3" role="contentinfo">
+  <div class="position-relative d-flex flex-justify-between py-6 mt-6 f6 text-gray border-top border-gray-light ">
+    <ul class="list-style-none d-flex flex-wrap ">
+      <li class="mr-3">&copy; 2017 <span title="0.28605s from unicorn-1713501843-52mqz">GitHub</span>, Inc.</li>
+        <li class="mr-3"><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li class="mr-3"><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li class="mr-3"><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li class="mr-3"><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage" class="footer-octicon" title="GitHub">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+    <ul class="list-style-none d-flex flex-wrap ">
+        <li class="mr-3"><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
+      <li class="mr-3"><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li class="mr-3"><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li class="mr-3"><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li class="mr-3"><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+  </div>
+</div>
 
 
-`@instructions`
 
-`@hint`
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"/></svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+    </button>
+    You can't perform that action at this time.
+  </div>
 
-`@pre_exercise_code`
-```{r}
 
-```
+    
+    <script crossorigin="anonymous" integrity="sha256-R7c3eUp64zkx0aUKgHD8RyBMQTxCRYqXgUMLHeA4450=" src="https://assets-cdn.github.com/assets/frameworks-47b737794a7ae33931d1a50a8070fc47204c413c42458a9781430b1de038e39d.js"></script>
+    
+    <script async="async" crossorigin="anonymous" integrity="sha256-Qkc87DGR10XKre61lV2syUoYE2acFhpZ4zg4WtwcvJA=" src="https://assets-cdn.github.com/assets/github-42473cec3191d745caadeeb5955dacc94a1813669c161a59e338385adc1cbc90.js"></script>
+    
+    
+    
+    
+  <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner d-none">
+    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"/></svg>
+    <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+  </div>
+  <div class="facebox" id="facebox" style="display:none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+    </button>
+  </div>
+</div>
 
-`@sample_code`
-```{r}
 
-```
+  </body>
+</html>
 
-`@solution`
-```{r}
-
-```
-
-`@sct`
-```{r}
-
-```
