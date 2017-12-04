@@ -461,6 +461,9 @@ Exercise Hint
 
 `@pre_exercise_code`
 ```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
 n<-100
 set.seed(123)
 my.data<-data.frame(gender=c(rep("male",n),rep("female",n)), brain=c(rnorm(n,1273,100),rnorm(n,1131,100)))
