@@ -1,6 +1,6 @@
 ---
 title       : Boxplot and xy-plot
-description : Recap last session and learn how to create a boxplot and a xyplot
+description : Recap last session and learn how to create a boxplot and an xyplot
 attachments :
 slides_link : 
 
@@ -197,11 +197,11 @@ x4 <- seq(-2, 6,by=0.01 )
 n.dist<-data.frame(x=x,y=dnorm(x=x, mean=0, sd=1),y2=dnorm(x=x, mean=0, sd=2))
 n.dist.sd<-data.frame(x=x2,y=dnorm(x=x2, mean=0, sd=1))
 n.dist.sd2<-data.frame(x=x3,y=dnorm(x=x3, mean=0, sd=1))
-p.norm<-ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)
+p.norm<-ggplot(aes(y=y,x=x),data=n.dist)+geom_line()+geom_area(aes(x=x,y=y),data=n.dist.sd2,alpha=0.3)+geom_area(aes(x=x,y=y),data=n.dist.sd,alpha=0.5)+theme_classic()+geom_vline(xintercept=0,col="red")+geom_vline(xintercept=0,col="blue",linetype=2)+ylab("Density")
 n.dist.skew<-data.frame(x=x4,y=dsn(x=x4,alpha=5,omega=2))
 mean.skew<-mean(rsn(10000,alpha=5,omega=2))
 median.skew<- median(rsn(10000,alpha=5,omega=2))
-p.skew<-ggplot(aes(y=y,x=x4),data=n.dist.skew)+geom_line()+theme_classic()+geom_vline(aes(xintercept=mean.skew),colour="red")+geom_vline(aes(xintercept=median.skew),colour="blue",linetype=2)
+p.skew<-ggplot(aes(y=y,x=x4),data=n.dist.skew)+geom_line()+theme_classic()+geom_vline(aes(xintercept=mean.skew),colour="red")+geom_vline(aes(xintercept=median.skew),colour="blue",linetype=2)+ylab("Density")
 
 
 ```
