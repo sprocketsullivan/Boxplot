@@ -480,9 +480,9 @@ ggplot(aes(y=_____,x=____),data=my.data)+
     geom_point()
 #add colours for female and male data
 #and add meaningfull axis labels
-ggplot(aes(y=____,x=____,col=____),data=my.data)
-    +geom_point()
-    +xlab('Body weight [kg]')+ylab('Brain Volume [mm³]')
+ggplot(aes(y=____,x=____,col=____),data=my.data)+
+    geom_point()+
+    xlab('Body weight [kg]')+ylab('Brain Volume [mm³]')
 ```
 
 `@solution`
@@ -492,9 +492,9 @@ ggplot(aes(y=brain,x=body),data=my.data)+
     geom_point()
 #add colours for female and male data
 #and add meaningfull axis labels
-ggplot(aes(y=brain,x=body,col=gender),data=my.data)
-    +geom_point()
-    +xlab('Body weight [kg]')+ylab('Brain Volume [mm³]')
+ggplot(aes(y=brain,x=body,col=gender),data=my.data)+
+    geom_point()+
+    xlab('Body weight [kg]')+ylab('Brain Volume [mm³]')
 ```
 
 `@sct`
