@@ -312,9 +312,10 @@ lang: r
 xp: 100
 skills: 1
 ```
-Overlaying a boxplot with the individual data points leads to a better understanding of the boxplot.
+Overlaying a boxplot with the individual data points potentially yields additional insights into the data structure.
 
 Here, we will add to our previous plot a [`geom_jitter()`](https://www.rdocumentation.org/packages/ggplot2/versions/2.2.1/topics/geom_jitter), which creates a scatterplot of your data.
+All dots are jittered (randomly displaced) along the x-axis, not changing their value but making it possible to view all individual data points simultaneously.
 
 `@instructions`
 Fill in the gaps to create a boxplot with brain volume on the y-axis and gender on the x-axis. `geom_jitter` will then add the individual data points.
@@ -513,6 +514,7 @@ In a next step we will investigate the relationship between brain volume and bod
 `@instructions`
 The geom_point layer will create a dot for each pair of the continuous variables. Fill in the necessary variables in the aesthetics statement.
 Plot brain volume on the y-axis and body weight on the x-axis.
+In a second step, colour the dots by gender.
 
 
 `@hint`
