@@ -375,11 +375,10 @@ Let's add some colour to the plot. For convenience, the plot commands can be ass
 `@instructions`
 - The first line of code will create a  boxplot with fill colours defined by gender
 - Change the two colours to obvious stereotypes like "pink" and "light blue"?
-- Add a theme to remove a lot of clutter. One theme provided by R is `theme_classic()`. See [`ggtheme`] (https://www.rdocumentation.org/packages/ggplot2/versions/2.2.1/topics/ggtheme) for more information.
-- Remove the legend by setting the legend.position to "none"
+
 
 `@hint`
-Have a look at the plot. Which color does the point with the lowest rating have?
+
 
 `@pre_exercise_code`
 ```{r}
@@ -406,6 +405,65 @@ plot(p.box)
 p.box<- p.box+
   scale_fill_manual(values=c("_____","_____"))
 plot(p.box)
+
+```
+
+`@solution`
+```{r}
+#boxplot
+p.box<-
+  ggplot(aes(y=brain,x=gender,fill=gender),data=my.data) +
+  geom_boxplot()
+plot(p.box)
+# change the two colours 
+p.box<- p.box+
+  scale_fill_manual(values=c("pink","light blue"))
+plot(p.box)
+```
+
+`@sct`
+```{r}
+success_msg("Well done!")
+```
+
+
+---
+## Themes and Legends
+
+```yaml
+type: NormalExercise
+key: 6305b532cb
+lang: r
+xp: 100
+skills: 1
+```
+Here we will customise the plot to remove some clutter. This and additional steps can be used to make plots publication ready and at the same time reproducible.
+
+`@instructions`
+- Add a theme. One theme provided by R is `theme_classic()`. See [`ggtheme`] (https://www.rdocumentation.org/packages/ggplot2/versions/2.2.1/topics/ggtheme) for more information.
+- Remove the legend by setting the `legend.position` to "none"
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+n<-100
+set.seed(123)
+my.data<-data.frame(gender=c(rep("male",n),rep("female",n)), brain=c(rnorm(n,1273,100),rnorm(n,1131,100)))
+my.data <-
+  my.data %>% 
+  mutate(body=brain/17+rnorm(n*2,0,5))
+```
+
+`@sample_code`
+```{r}
+p.box<-
+  ggplot(aes(y=brain,x=gender,fill=gender),data=my.data) +
+  geom_boxplot()+
+  scale_fill_manual(values=c("pink","light blue"))
+plot(p.box)
 # add a theme 
 p.box<- p.box+  
   theme_c_____()
@@ -418,13 +476,10 @@ plot(p.box)
 
 `@solution`
 ```{r}
-#boxplot
+#boxplot as created previously
 p.box<-
   ggplot(aes(y=brain,x=gender,fill=gender),data=my.data) +
-  geom_boxplot()
-plot(p.box)
-# change the two colours 
-p.box<- p.box+
+  geom_boxplot()+
   scale_fill_manual(values=c("pink","light blue"))
 plot(p.box)
 # add a theme 
@@ -461,7 +516,7 @@ Plot brain volume on the y-axis and body weight on the x-axis.
 
 
 `@hint`
-Exercise Hint
+
 
 `@pre_exercise_code`
 ```{r}
